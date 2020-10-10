@@ -77,7 +77,7 @@ export const RepositoryInfo = styled.div`
   }
 `;
 
-export const Inssues = styled.div`
+export const Issues = styled.div`
   margin-top: 80px;
 
   a {
