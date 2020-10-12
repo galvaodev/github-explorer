@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FiChevronRight } from 'react-icons/fi';
 import { useRouteMatch } from 'react-router-dom';
+import ReactPaginate from 'react-paginate';
 
 import { RepositoryParams, Issue, RepositoryInt } from '../../types/interfaces';
 import api from '../../services/api';
@@ -27,6 +28,32 @@ const Repository: React.FC = () => {
 
   return (
     <>
+      <ReactPaginate
+        pageCount={1}
+        pageRangeDisplayed={10}
+        marginPagesDisplayed={2}
+        previousLabel={'previous'}
+        nextLabel={'next'}
+        breakLabel={'break-me'}
+        breakClassName={'break-class'}
+        breakLinkClassName={'break-link'}
+        onPageChange={(selectedItem: { selected: number }) => null}
+        initialPage={2}
+        forcePage={3}
+        disableInitialCallback={false}
+        containerClassName={'container'}
+        pageClassName={'page-li'}
+        pageLinkClassName={'page-a'}
+        activeClassName={'active'}
+        activeLinkClassName={'active'}
+        previousClassName={'previous-li'}
+        nextClassName={'next-li'}
+        previousLinkClassName={'previous-a'}
+        nextLinkClassName={'next-a'}
+        disabledClassName={'disabled'}
+        hrefBuilder={(pageIndex: number) => null}
+        extraAriaContext={'aria'}
+      />
       {repository && (
         <RepositoryInfo>
           <header>
