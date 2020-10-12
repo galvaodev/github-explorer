@@ -3,22 +3,16 @@ import { Link } from 'react-router-dom';
 import { FiChevronRight } from 'react-icons/fi';
 import api from '../../services/api';
 
-import logoImg from '../../assets/logo.svg';
-import { Title, Form, Repositories, Error } from './styles';
+//Import Interfaces
+import { RepositoryInt } from '../../types/interfaces';
 
-interface Repository {
-  full_name: string;
-  description: string;
-  owner: {
-    login: string;
-    avatar_url: string;
-  };
-}
+import { Title, Form, Repositories, Error } from './styles';
 
 const Dashboard: React.FC = () => {
   const [newRepo, setNewRepo] = useState('');
   const [inputError, setInputError] = useState('');
-  const [repositories, setRepositories] = useState<Repository[]>(() => {
+
+  const [repositories, setRepositories] = useState<RepositoryInt[]>(() => {
     const storagedRepositories = localStorage.getItem(
       '@GitHubExplorer:repositories',
     );
@@ -26,7 +20,6 @@ const Dashboard: React.FC = () => {
     if (storagedRepositories) {
       return JSON.parse(storagedRepositories);
     }
-
     return [];
   });
 
@@ -48,7 +41,7 @@ const Dashboard: React.FC = () => {
     }
 
     try {
-      const response = await api.get<Repository>(`repos/${newRepo}`);
+      const response = await api.get<RepositoryInt>(`repos/${newRepo}`);
       const repository = response.data;
 
       setRepositories([...repositories, repository]);
@@ -60,7 +53,6 @@ const Dashboard: React.FC = () => {
   }
   return (
     <>
-      <img src={logoImg} alt="Github Explorer" />
       <Title>Explore repositórios no Github</Title>
 
       <Form hasError={!!inputError} onSubmit={handleAddRepository}>
