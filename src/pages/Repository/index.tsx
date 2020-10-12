@@ -4,14 +4,12 @@ import { useRouteMatch } from 'react-router-dom';
 
 import { RepositoryParams, Issue, RepositoryInt } from '../../types/interfaces';
 import api from '../../services/api';
-import ThemeProvider, { useTheme } from '../../context/ThemeContext';
 import { RepositoryInfo, Issues } from './styles';
 
 const Repository: React.FC = () => {
   const [repository, setRepository] = useState<RepositoryInt | null>(null);
   const [issues, setIssues] = useState<Issue[]>([]);
   const { params } = useRouteMatch<RepositoryParams>();
-  const { theme } = useTheme();
 
   useEffect(() => {
     async function loadDate(): Promise<void> {
@@ -29,8 +27,6 @@ const Repository: React.FC = () => {
 
   return (
     <>
-      <ThemeProvider>{theme}</ThemeProvider>
-
       {repository && (
         <RepositoryInfo>
           <header>

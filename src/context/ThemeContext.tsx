@@ -1,36 +1,25 @@
 import React, { createContext, useContext, useState } from 'react';
 
-export enum Theme {
-  Dark = 'Dark',
-  Light = 'Light',
-}
+type Theme = 'light' | 'dark';
+type ThemeContext = { theme: Theme; toggleTheme: () => void };
 
-export type ThemeContextType = {
-  theme: Theme;
-  setTheme: (Theme: Theme) => void;
-};
+export const ThemeContext = createContext<ThemeContext>({} as ThemeContext);
 
-const ThemeContext = createContext<ThemeContextType>({
-  theme: Theme.Dark,
-  setTheme: (theme) => console.warn('No theme provider'),
-});
-
-// const useTheme = () => useContext(ThemeContext);
-
-export default function ThemeProvider({ children }: { children: any }) {
-  const [theme, setTheme] = useState(Theme.Dark);
+export const ThemeCustomProvider: React.FC = ({ children }) => {
+  const [theme, setTheme] = useState<Theme>('light');
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );
-}
+};
 
-export function useTheme() {
+export const useTheme = () => {
   const context = useContext(ThemeContext);
-  const { theme, setTheme } = context;
-  return { theme, setTheme };
-}
-
-// export { ThemeContext, useTheme };
+  const { theme, toggleTheme } = context;
+  return { theme, toggleTheme };
+};

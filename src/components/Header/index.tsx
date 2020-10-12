@@ -1,21 +1,34 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { FiChevronLeft } from 'react-icons/fi';
+import { useTheme } from '../../context/ThemeContext';
 
 import logoImg from '../../assets/logo.svg';
 
-import { HeaderStyle } from './styles';
+import { HeaderStyle, Buttons } from './styles';
 
 const Header: React.FC = () => {
+  const location = useLocation();
+  const { theme, toggleTheme } = useTheme();
+
   return (
     <HeaderStyle>
       <Link to="/">
         <img src={logoImg} alt="Github Explorer" />
       </Link>
-      <Link to="/">
-        <FiChevronLeft size={16} />
-        Voltar
-      </Link>
+      <Buttons>
+        {location.pathname === '/' ? (
+          ''
+        ) : (
+          <Link to="/">
+            <FiChevronLeft size={16} />
+            Voltar
+          </Link>
+        )}
+        <div onClick={toggleTheme} className="theme-switch">
+          <div className="switch"></div>
+        </div>
+      </Buttons>
     </HeaderStyle>
   );
 };

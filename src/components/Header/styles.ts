@@ -22,3 +22,11 @@ export const HeaderStyle = styled.div`
     }
   }
 `;
+
+export const Buttons = styled.div`
+  display: flex;
+
+  a {
+    margin-right: 20px;
+  }
+`;
