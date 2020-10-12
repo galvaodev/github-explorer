@@ -7,7 +7,7 @@ interface FormProps {
 
 export const Title = styled.h1`
   font-size: 48px;
-  color: #3a3a3a;
+  color: ${props => props.theme.title};
   margin-top: 50px;
   max-width: 450px;
 `;

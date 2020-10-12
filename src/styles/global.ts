@@ -11,6 +11,7 @@ declare module 'styled-components' {
     text: string;
     translate: string;
     button: string;
+    subtitle: string;
   }
 }
 

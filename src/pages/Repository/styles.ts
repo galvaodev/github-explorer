@@ -18,12 +18,12 @@ export const RepositoryInfo = styled.div`
 
       strong {
         font-size: 36px;
-        color: #3d3d4d;
+        color: ${props => props.theme.subtitle};
       }
 
       p {
         font-size: 18px;
-        color: #737380;
+        color: ${props => props.theme.text};
         margin-top: 4px;
       }
     }
@@ -42,13 +42,13 @@ export const RepositoryInfo = styled.div`
       strong {
         display: block;
         font-size: 36px;
-        color: #3d3d4d;
+        color: ${props => props.theme.subtitle};
       }
 
       span {
         display: block;
         margin-top: 4px;
-        color: #6c6c80;
+        color: ${props => props.theme.text};
       }
     }
   }

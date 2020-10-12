@@ -3,23 +3,23 @@ import { ThemeProvider } from 'styled-components';
 
 import { useTheme } from '../../context/ThemeContext';
 
-// import { Container } from './styles';
-
 const Themes: React.FC = ({ children }) => {
   const { theme } = useTheme();
 
   const themes = {
     dark: {
       background: '#272823',
-      title: '#6495ed',
+      title: '#fff',
       text: '#fff',
+      subtitle: '#fff',
       translate: '0px',
       button: '#553AFC',
     },
     light: {
       background: '#f0f0f5 ',
-      title: '#ff6347',
-      text: '#000',
+      title: '#3a3a3a',
+      subtitle: '#3d3d4d',
+      text: '#a8a8b3',
       translate: '37px',
       button: '#000',
     },

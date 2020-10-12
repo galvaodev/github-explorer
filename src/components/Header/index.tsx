@@ -4,6 +4,7 @@ import { FiChevronLeft } from 'react-icons/fi';
 import { useTheme } from '../../context/ThemeContext';
 
 import logoImg from '../../assets/logo.svg';
+import logoImgLight from '../../assets/logo-light.svg';
 
 import { HeaderStyle, Buttons } from './styles';
 
@@ -14,7 +15,11 @@ const Header: React.FC = () => {
   return (
     <HeaderStyle>
       <Link to="/">
-        <img src={logoImg} alt="Github Explorer" />
+        {theme === 'dark' ? (
+          <img src={logoImgLight} alt="Github Explorer" />
+        ) : (
+          <img src={logoImg} alt="Github Explorer" />
+        )}
       </Link>
       <Buttons>
         {location.pathname === '/' ? (
